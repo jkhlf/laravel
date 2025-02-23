@@ -1,3 +1,6 @@
 <x-layout>
-    <h1>bla bla bla bla</h1>
+    <x-slot:namesection>
+        About
+        </x-slot>
+        <h1>bla bla bla bla2</h1>
 </x-layout>
