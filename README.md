@@ -1,7 +1,13 @@
 # Notes
 
-- double curly braces in blade files are used to display php under the hood
+## Blade Templates
+- Double curly braces `{{ }}` in blade files are used to display PHP expressions
+- Blade files compile into plain PHP code under the hood
+- Views are stored in `resources/views` directory
 
-- a blade component that will be used to create a nav link in the layout file.
-
-- $attributes variable is a special variable that contains all the attributes that are passed to the component.
+## Components
+- Components help create reusable UI elements
+- A blade component using `<x-component-name>` syntax
+- Components can accept props and attributes
+- `$attributes` is a special variable containing all passed attributes
+- Components can use slots to inject content
