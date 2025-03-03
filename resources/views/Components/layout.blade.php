@@ -17,6 +17,7 @@
         <x-nav-link href="/" :active="request()->is('/')">Home </x-nav-link>
         <x-nav-link href="/about" :active="request()->is('about')" >About </x-nav-link>
         <x-nav-link href="/contact" :active="request()->is('contact')">Contact </x-nav-link>
+        <x-nav-link href="/cats" :active="request()->is('cats')">Cat Photos </x-nav-link>
       </div>
     </nav>   
   </header>

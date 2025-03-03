@@ -3,5 +3,8 @@
         Dashboard
     </x-slot>
 
-    <h1>bla bla bla bla</h1>
+    @foreach ( $cats as $cats )
+        <li>{{ $cats['name'] }}: Color {{ $cats['color'] }} </li>
+    @endforeach
+
 </x-layout>
