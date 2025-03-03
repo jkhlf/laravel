@@ -2,17 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatController;
+use App\Http\Controllers\AuthController;
+use App\Models\Cats;
 
-$cats = [ 
-    ['name' => 'Fluffy', 'color' => 'black'],
-    ['name' => 'Whiskers', 'color' => 'white'],
-    ['name' => 'Socks', 'color' => 'orange']
-];
-
-
-Route::get('/', function () use ($cats) {
-    return view('home', [
-        'cats' => $cats
+Route::get('/', function () {
+    return view(
+        'home',
+        [
+            'cats' => Cats::all()
         ]
     );
 });
@@ -25,5 +22,16 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-// New route for cat photos
 Route::get('/cats', [CatController::class, 'index']);
+
+// Authentication Routes
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});

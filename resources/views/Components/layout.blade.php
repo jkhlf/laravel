@@ -9,7 +9,7 @@
 <body>
 <div>
   <header>
-    <nav class="flex items-center justify-around" aria-label="Global">
+    <nav class="flex items-center justify-around p-4" aria-label="Global">
       <div class="flex">
         <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.entoin.com%2Fimages%2Fac7.jpg&f=1&nofb=1&ipt=693839ed9ef641302f5757662c543159a66171b795ce39cf3fb2155a1b497bd5&ipo=images" alt="Logo" class="h-8 w-auto">
       </div>
@@ -18,6 +18,20 @@
         <x-nav-link href="/about" :active="request()->is('about')" >About </x-nav-link>
         <x-nav-link href="/contact" :active="request()->is('contact')">Contact </x-nav-link>
         <x-nav-link href="/cats" :active="request()->is('cats')">Cat Photos </x-nav-link>
+      </div>
+      
+      <!-- Auth Navigation -->
+      <div class="lg:flex lg:gap-x-5">
+        @auth
+          <span class="text-sm text-gray-700">{{ Auth::user()->name }}</span>
+          <form method="POST" action="{{ route('logout') }}" class="inline">
+            @csrf
+            <button type="submit" class="text-sm text-red-600 hover:text-red-800">Logout</button>
+          </form>
+        @else
+          <x-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">Login</x-nav-link>
+          <x-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">Register</x-nav-link>
+        @endauth
       </div>
     </nav>   
   </header>
