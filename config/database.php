@@ -10,22 +10,26 @@ return [
     |--------------------------------------------------------------------------
     |
     | Here you may specify which of the database connections below you wish
-    | to use as your default connection for database operations. This is
-    | the connection which will be utilized unless another connection
-    | is explicitly specified when you execute a query / statement.
+    | to use as your default connection for all database work. Of course
+    | you may use many connections at once using the Database library.
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
     | Database Connections
     |--------------------------------------------------------------------------
     |
-    | Below are all of the database connections defined for your application.
-    | An example configuration is provided for each database system which
-    | is supported by Laravel. You're free to add / remove connections.
+    | Here are each of the database connections setup for your application.
+    | Of course, examples of configuring each database platform that is
+    | supported by Laravel is shown below to make development simple.
+    |
+    |
+    | All database work in Laravel is done through the PHP PDO facilities
+    | so make sure you have the driver for your particular database of
+    | choice installed on your machine before you begin development.
     |
     */
 
@@ -84,13 +88,13 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DB_URL'),
+            'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'laravel'),
-            'username' => env('DB_USERNAME', 'root'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
-            'charset' => env('DB_CHARSET', 'utf8'),
+            'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
             'search_path' => 'public',

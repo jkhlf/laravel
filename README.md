@@ -11,3 +11,10 @@
 - Components can accept props and attributes
 - `$attributes` is a special variable containing all passed attributes
 - Components can use slots to inject content
+
+## Models
+
+## Controllers 
+
+## Auth
+
